@@ -9,7 +9,7 @@ public:
     using Flags = unsigned int;
 
     virtual ~AbstractProductUnit() = default;
-    void add(std::shared_ptr<AbstractProductUnit>&, Flags);
+    void add(const std::shared_ptr<AbstractProductUnit>&, Flags);
 
     virtual std::string compile(unsigned int lvl = 0) const = 0;
 protected:

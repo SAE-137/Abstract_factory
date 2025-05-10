@@ -9,18 +9,14 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    ilfacory.cpp \
-    lfacotrycs.cpp \
-    lfactorycpp.cpp \
-    lfactoryjava.cpp \
+    abstractfactory.cpp \
+    abstractproductunit.cpp \
     main.cpp \
     widget.cpp
 
 HEADERS += \
-    ilfacory.h \
-    lfacotrycs.h \
-    lfactorycpp.h \
-    lfactoryjava.h \
+    abstractfactory.h \
+    abstractproductunit.h \
     widget.h
 
 FORMS += \

@@ -12,6 +12,7 @@ SOURCES += \
     abstractfactory.cpp \
     abstractproductunit.cpp \
     cppclassunit.cpp \
+    cppmethodunit.cpp \
     iclassunit.cpp \
     main.cpp \
     widget.cpp
@@ -20,6 +21,7 @@ HEADERS += \
     abstractfactory.h \
     abstractproductunit.h \
     cppclassunit.h \
+    cppmethodunit.h \
     iclassunit.h \
     languageSpecific.h \
     widget.h

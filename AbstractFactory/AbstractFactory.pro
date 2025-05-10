@@ -12,6 +12,7 @@ SOURCES += \
     abstractfactory.cpp \
     abstractproductunit.cpp \
     cppclassunit.cpp \
+    cppfactory.cpp \
     cppmethodunit.cpp \
     cppprintoperatorunit.cpp \
     iclassunit.cpp \
@@ -22,6 +23,7 @@ HEADERS += \
     abstractfactory.h \
     abstractproductunit.h \
     cppclassunit.h \
+    cppfactory.h \
     cppmethodunit.h \
     cppprintoperatorunit.h \
     iclassunit.h \

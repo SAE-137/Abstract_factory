@@ -172,8 +172,75 @@ std::string generateProgram() {
     return myClass.compile();
 
 }
+#include"abstractfactory.h"
+#include"cppfactory.h"
+
+std::string generateProgramByFactory(const AbstractFactory& factory)
+{
+    auto myClass = factory.createClass("MyClass", 0, 0);
+
+    auto method = factory.createMethod("testFunction", "void", CppMethodUnit::STATIC);
+
+
+    std::dynamic_pointer_cast<CppMethodUnit>(method)->add(factory.createPrintOperator("Hello, Abstract Factory!"), 0);
+
+
+    std::dynamic_pointer_cast<IClassUnit>(myClass)->add(method, CppClassUnit::PUBLIC);
+
+    return myClass->compile();
+}
+
+
 
 int main() {
-    std::cout << generateProgram() << std::endl;
+    CppFactory factory;
+    std::cout << generateProgramByFactory(factory) << std::endl;
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

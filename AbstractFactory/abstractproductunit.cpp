@@ -1,8 +1,8 @@
 #include "abstractproductunit.h"
 
-void AbstractProductUnit::add(std::shared_ptr<AbstractProductUnit>&, Flags)
+void AbstractProductUnit::add(const std::shared_ptr<AbstractProductUnit>&, Flags)
 {
-    throw std::runtime_error( "Not supported");
+    throw std::runtime_error( "Not supporterrrd");
 }
 
 std::string AbstractProductUnit::generateShift(unsigned int lvl = 0) const

@@ -11,12 +11,15 @@ CONFIG += c++17
 SOURCES += \
     abstractfactory.cpp \
     abstractproductunit.cpp \
+    iclassunit.cpp \
     main.cpp \
     widget.cpp
 
 HEADERS += \
     abstractfactory.h \
     abstractproductunit.h \
+    iclassunit.h \
+    languageSpecific.h \
     widget.h
 
 FORMS += \

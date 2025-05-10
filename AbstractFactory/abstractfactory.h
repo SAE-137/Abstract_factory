@@ -6,6 +6,10 @@ class AbstractFactory
 {
 public:
     AbstractFactory();
+
+
+protected:
+
 };
 
 #endif // ABSTRACTFACTORY_H

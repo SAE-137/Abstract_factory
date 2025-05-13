@@ -8,24 +8,15 @@
 
 class IClassUnit : public AbstractProductUnit {
 public:
-    using Flags = unsigned int;
-
-    explicit IClassUnit(const std::string& name) : m_name(name) {}
-    virtual ~IClassUnit() = default;
-
-
-    virtual void add(const std::shared_ptr<AbstractProductUnit>& unit, Flags flags) = 0;
-
-
-    virtual const std::vector<std::string>& getAccessModifiers() const = 0;
-
-
-    virtual std::string compile(unsigned int level = 0) const override = 0;
+   enum AccessModifier { PUBLIC, PROTECTED, PRIVATE, INTERNAL, PROTECTED_INTERNAL };
+   static const std::vector<std::string> ACCESS_MODIFIERS;
 
 protected:
     std::string m_name;
-    using Fields = std::vector<std::shared_ptr<AbstractProductUnit>>;
-    std::vector<Fields> m_fields;
+    std::vector<std::vector<std::shared_ptr<AbstractProductUnit>>> m_fields;
+    explicit IClassUnit(const std::string& name) : m_name(name) {
+        m_fields.resize(ACCESS_MODIFIERS.size());
+    }
 };
 
 #endif // ICLASSUNIT_H

@@ -17,6 +17,7 @@ SOURCES += \
     cppprintoperatorunit.cpp \
     iclassunit.cpp \
     main.cpp \
+    methodunit.cpp \
     widget.cpp
 
 HEADERS += \
@@ -27,7 +28,7 @@ HEADERS += \
     cppmethodunit.h \
     cppprintoperatorunit.h \
     iclassunit.h \
-    languageSpecific.h \
+    methodunit.h \
     widget.h
 
 FORMS += \

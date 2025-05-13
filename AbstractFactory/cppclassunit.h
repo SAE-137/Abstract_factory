@@ -2,30 +2,27 @@
 #define CPPCLASSUNIT_H
 
 #include "IClassUnit.h"
+#include"abstractproductunit.h"
 
 class CppClassUnit : public IClassUnit {
 public:
-    enum CppAccessModifier {
-        PUBLIC,
-        PROTECTED,
-        PRIVATE,
-        CPP_MODIFIER_COUNT
-    };
-
-    explicit CppClassUnit(const std::string& name) : IClassUnit(name) {
-        m_fields.resize(CPP_MODIFIER_COUNT);
+    explicit CppClassUnit(const std::string& name) : IClassUnit(name) {}
+    void add(const std::shared_ptr<AbstractProductUnit>& unit, Flags flags) override {
+        size_t access = (flags < ACCESS_MODIFIERS.size()) ? flags : PRIVATE;
+        m_fields[access].push_back(unit);
     }
-
-    void add(const std::shared_ptr<AbstractProductUnit>& unit, Flags flags) override;
-
-    const std::vector<std::string>& getAccessModifiers() const override {
-        static const std::vector<std::string> MODIFIERS = {
-            "public", "protected", "private"
-        };
-        return MODIFIERS;
+    std::string compile(unsigned int level = 0) const override {
+        std::string result = generateShift(level) + "class " + m_name + " {\n";
+        for (size_t i = 0; i < ACCESS_MODIFIERS.size(); ++i) {
+            if (m_fields[i].empty() || i >= 3) continue;
+            result += generateShift(level) + ACCESS_MODIFIERS[i] + ":\n";
+            for (const auto& f : m_fields[i]) {
+                result += f->compile(level + 1);
+            }
+        }
+        result += generateShift(level) + "};\n";
+        return result;
     }
-
-    std::string compile(unsigned int level = 0) const override;
 };
 
 #endif // CPPCLASSUNIT_H

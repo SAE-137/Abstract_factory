@@ -7,6 +7,7 @@
 
 
 #include"abstractfactory.h"
+#include "csharpfactory.h"
 #include"iclassunit.h"
 #include"cppfactory.h"
 #include"javafactory.h"
@@ -37,13 +38,12 @@ std::string generateProgram(const AbstractFactory& factory) {
 
 int main() {
     CppFactory cppFactory;
+    CSharpFactory csharpFactory;
     JavaFactory javaFactory;
 
-
-
     std::cout << "C++ Code:\n" << generateProgram(cppFactory) << "\n";
-    std::cout << "C++ Code:\n" << generateProgram(javaFactory) << "\n";
-
+    std::cout << "C# Code:\n" << generateProgram(csharpFactory) << "\n";
+    std::cout << "Java Code:\n" << generateProgram(javaFactory) << "\n";
 
     return 0;
 }

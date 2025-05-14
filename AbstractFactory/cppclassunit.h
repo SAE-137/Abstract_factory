@@ -2,7 +2,7 @@
 #define CPPCLASSUNIT_H
 
 #include "IClassUnit.h"
-#include"abstractproductunit.h"
+#include"AbstractProductUnit.h"
 
 class CppClassUnit : public IClassUnit {
 public:

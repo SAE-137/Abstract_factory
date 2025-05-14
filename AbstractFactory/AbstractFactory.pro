@@ -17,6 +17,7 @@ SOURCES += \
     cppprintoperatorunit.cpp \
     iclassunit.cpp \
     javaclassunit.cpp \
+    javamethodunit.cpp \
     main.cpp \
     methodunit.cpp \
     widget.cpp
@@ -30,6 +31,7 @@ HEADERS += \
     cppprintoperatorunit.h \
     iclassunit.h \
     javaclassunit.h \
+    javamethodunit.h \
     methodunit.h \
     widget.h
 

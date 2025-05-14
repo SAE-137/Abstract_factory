@@ -10,8 +10,13 @@
 #include"iclassunit.h"
 #include"cppfactory.h"
 
+
 const std::vector<std::string> IClassUnit::ACCESS_MODIFIERS = {
     "public", "protected", "private", "internal", "protected internal"
+};
+
+const std::vector<std::string> MethodUnit::ACCESS_MODIFIERS = {
+    "static", "const", "virtual", "abstract", "final", "sealed", "override"
 };
 
 std::string generateProgram(const AbstractFactory& factory) {

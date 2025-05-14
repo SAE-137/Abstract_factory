@@ -7,7 +7,7 @@ class JavaMethodUnit : public MethodUnit {
 public:
     JavaMethodUnit(const std::string& name, const std::string& returnType, Flags flags)
         : MethodUnit(name, returnType, flags) {}
-    void add(const std::shared_ptr<AbstractProductUnit>& unit, Flags /*flags*/ = 0) override {
+    void add(const std::shared_ptr<AbstractProductUnit>& unit, Flags = 0) override {
         m_body.push_back(unit);
     }
     std::string compile(unsigned int level = 0) const override {
@@ -27,6 +27,6 @@ public:
         }
         return result;
     }
-};
+}; //TODO
 
 #endif // JAVAMETHODUNIT_H

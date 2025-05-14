@@ -14,6 +14,8 @@ public:
         SEALED = 1 << 5,
         OVERRIDE = 1 << 6
     };
+
+    static const std::vector<std::string> ACCESS_MODIFIERS;
 protected:
     std::string m_name;
     std::string m_returnType;

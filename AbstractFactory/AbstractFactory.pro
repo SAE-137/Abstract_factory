@@ -15,6 +15,10 @@ SOURCES += \
     cppfactory.cpp \
     cppmethodunit.cpp \
     cppprintoperatorunit.cpp \
+    csharpclassunit.cpp \
+    csharpfactory.cpp \
+    csharpmethodunit.cpp \
+    csharpprintoperatorunit.cpp \
     iclassunit.cpp \
     javaclassunit.cpp \
     javafactory.cpp \
@@ -31,6 +35,10 @@ HEADERS += \
     cppfactory.h \
     cppmethodunit.h \
     cppprintoperatorunit.h \
+    csharpclassunit.h \
+    csharpfactory.h \
+    csharpmethodunit.h \
+    csharpprintoperatorunit.h \
     iclassunit.h \
     javaclassunit.h \
     javafactory.h \

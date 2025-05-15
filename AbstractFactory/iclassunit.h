@@ -8,15 +8,27 @@
 
 class IClassUnit : public AbstractProductUnit {
 public:
-   enum AccessModifier { PUBLIC, PROTECTED, PRIVATE, INTERNAL, PROTECTED_INTERNAL };
+    enum AccessModifier
+    {
+        PUBLIC,
+        PROTECTED,
+        PRIVATE,
+        INTERNAL,
+        PROTECTED_INTERNAL,
+        PRIVATE_PROTECTED
+    };
    static const std::vector<std::string> ACCESS_MODIFIERS;
+
+   explicit IClassUnit(const std::string& name, size_t fields_size)
+       : m_name(name)
+       , m_fields(fields_size) {}
+
+   virtual ~IClassUnit() = default;
 
 protected:
     std::string m_name;
-    std::vector<std::vector<std::shared_ptr<AbstractProductUnit>>> m_fields;
-    explicit IClassUnit(const std::string& name) : m_name(name) {
-        m_fields.resize(ACCESS_MODIFIERS.size());
-    }
+    using Fields = std::vector<std::shared_ptr<AbstractProductUnit>>;
+    std::vector<Fields> m_fields;
 };
 
 #endif // ICLASSUNIT_H

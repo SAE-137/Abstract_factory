@@ -6,13 +6,19 @@
 
 class CppClassUnit : public IClassUnit {
 public:
-    explicit CppClassUnit(const std::string& name) : IClassUnit(name) {}
-    void add(const std::shared_ptr<AbstractProductUnit>& unit, Flags flags) override {
+    static const std::vector<std::string> ACCESS_MODIFIERS;
+
+    explicit CppClassUnit(const std::string& name)
+        : IClassUnit(name, ACCESS_MODIFIERS.size()) {}
+
+    void add(const std::shared_ptr<AbstractProductUnit>& unit, Flags flags) {
         size_t access = (flags < ACCESS_MODIFIERS.size()) ? flags : PRIVATE;
         m_fields[access].push_back(unit);
     }
-    std::string compile(unsigned int level = 0) const override {
+
+    std::string compile(unsigned int level = 0) const {
         std::string result = generateShift(level) + "class " + m_name + " {\n";
+
         for (size_t i = 0; i < ACCESS_MODIFIERS.size(); ++i) {
             if (m_fields[i].empty() || i >= 3) continue;
             result += generateShift(level) + ACCESS_MODIFIERS[i] + ":\n";
@@ -25,4 +31,5 @@ public:
     }
 };
 
+const std::vector<std::string> CppClassUnit::ACCESS_MODIFIERS = { "public", "protected", "private" };
 #endif // CPPCLASSUNIT_H

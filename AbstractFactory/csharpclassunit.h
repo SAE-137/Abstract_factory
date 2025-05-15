@@ -5,7 +5,11 @@
 
 class CSharpClassUnit : public IClassUnit {
 public:
-    explicit CSharpClassUnit(const std::string& name) : IClassUnit(name) {}
+    static const std::vector<std::string> ACCESS_MODIFIERS;
+
+    explicit CSharpClassUnit(const std::string& name)
+        : IClassUnit(name, ACCESS_MODIFIERS.size()) {}
+
     void add(const std::shared_ptr<AbstractProductUnit>& unit, Flags flags) override {
         size_t access = (flags < ACCESS_MODIFIERS.size()) ? flags : PRIVATE;
         m_fields[access].push_back(unit);
@@ -15,7 +19,7 @@ public:
         for (size_t i = 0; i < ACCESS_MODIFIERS.size(); ++i) {
             if (m_fields[i].empty()) continue;
             for (const auto& f : m_fields[i]) {
-                result += f->compile(level + 1);
+               result += generateShift(level + 1) + ACCESS_MODIFIERS[i] + " " + f->compile(level + 1);
             }
         }
         result += generateShift(level) + "}\n";

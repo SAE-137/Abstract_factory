@@ -26,6 +26,7 @@ SOURCES += \
     javaprintoperatorunit.cpp \
     main.cpp \
     methodunit.cpp \
+    printoperatorunit.cpp \
     widget.cpp
 
 HEADERS += \
@@ -45,6 +46,7 @@ HEADERS += \
     javamethodunit.h \
     javaprintoperatorunit.h \
     methodunit.h \
+    printoperatorunit.h \
     widget.h
 
 FORMS += \

@@ -17,7 +17,7 @@ public:
         PROTECTED_INTERNAL,
         PRIVATE_PROTECTED
     };
-   static const std::vector<std::string> ACCESS_MODIFIERS;
+   //static const std::vector<std::string> ACCESS_MODIFIERS;
 
    explicit IClassUnit(const std::string& name, size_t fields_size)
        : m_name(name)

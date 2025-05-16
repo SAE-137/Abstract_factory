@@ -1,16 +1,16 @@
 #ifndef JAVAPRINTOPERATORUNIT_H
 #define JAVAPRINTOPERATORUNIT_H
 
-#include"abstractproductunit.h"
 
-class JavaPrintOperatorUnit : public AbstractProductUnit{
+#include"printoperatorunit.h"
+
+class JavaPrintOperatorUnit : public PrintOperatorUnit{
 public:
-    explicit JavaPrintOperatorUnit(const std::string& text) : m_text(text) {}
+    explicit JavaPrintOperatorUnit(const std::string& text)
+        : PrintOperatorUnit(text) {}
     std::string compile(unsigned int level = 0) const override {
         return generateShift(level) + "System.out.println(\"" + m_text + "\");\n";
     }
-private:
-    std::string m_text;
 };
 
 #endif // JAVAPRINTOPERATORUNIT_H

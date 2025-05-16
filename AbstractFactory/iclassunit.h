@@ -2,14 +2,11 @@
 #define ICLASSUNIT_H
 
 #include <vector>
-#include <memory>
-#include <string>
 #include "AbstractProductUnit.h"
 
 class IClassUnit : public AbstractProductUnit {
 public:
-    enum AccessModifier
-    {
+    enum AccessModifier {
         PUBLIC,
         PROTECTED,
         PRIVATE,
@@ -17,13 +14,11 @@ public:
         PROTECTED_INTERNAL,
         PRIVATE_PROTECTED
     };
-   //static const std::vector<std::string> ACCESS_MODIFIERS;
 
-   explicit IClassUnit(const std::string& name, size_t fields_size)
-       : m_name(name)
-       , m_fields(fields_size) {}
+    explicit IClassUnit(const std::string& name, size_t fields_size)
+        : m_name(name), m_fields(fields_size) {}
 
-   virtual ~IClassUnit() = default;
+    virtual ~IClassUnit() = default;
 
 protected:
     std::string m_name;

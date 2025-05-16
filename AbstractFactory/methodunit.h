@@ -19,7 +19,6 @@ public:
         : m_name(name), m_returnType(returnType), m_flags(flags) {}
 
     virtual ~MethodUnit() = default;
-    //static const std::vector<std::string> ACCESS_MODIFIERS;
 
     void Add(const std::shared_ptr<AbstractProductUnit>& unit, Flags /* flags */ = 0)
     {

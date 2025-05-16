@@ -14,17 +14,26 @@ public:
         size_t access = (flags < ACCESS_MODIFIERS.size()) ? flags : PRIVATE;
         m_fields[access].push_back(unit);
     }
-    std::string compile(unsigned int level = 0) const override {
-        std::string result = generateShift(level) + "public class " + m_name + " {\n";
-        for (size_t i = 0; i < ACCESS_MODIFIERS.size(); ++i) {
-            if (m_fields[i].empty()) continue;
-            for (const auto& f : m_fields[i]) {
-               result += generateShift(level + 1) + ACCESS_MODIFIERS[i] + " " + f->compile(level + 1);
+
+    std::string compile(unsigned int level = 0) const override
+    {
+        std::string result = "class " + m_name + " {\n";
+
+        for (size_t i = 0; i < ACCESS_MODIFIERS.size(); i++)
+        {
+
+            for (const auto& f : m_fields[i])
+            {
+                result += generateShift(level + 1) + ACCESS_MODIFIERS[i] + " " + f->compile(level + 1);
             }
         }
-        result += generateShift(level) + "}\n";
+
+        result += generateShift(level) + "};\n";
+
         return result;
     }
 };
+
+
 
 #endif // CSHARPCLASSUNIT_H

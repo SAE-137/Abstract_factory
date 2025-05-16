@@ -15,14 +15,26 @@ public:
         OVERRIDE = 1 << 6
     };
 
-    static const std::vector<std::string> ACCESS_MODIFIERS;
+    MethodUnit(const std::string& name, const std::string& returnType, Flags flags)
+        : m_name(name), m_returnType(returnType), m_flags(flags) {}
+
+    virtual ~MethodUnit() = default;
+
+    void Add(const std::shared_ptr<AbstractProductUnit>& unit, Flags /* flags */ = 0)
+    {
+        if (unit == nullptr)
+        {
+            throw std::runtime_error("ERROR, unit is nullptr.");
+        }
+
+        m_body.push_back(unit);
+    }
 protected:
     std::string m_name;
     std::string m_returnType;
     Flags m_flags;
     std::vector<std::shared_ptr<AbstractProductUnit>> m_body;
-    MethodUnit(const std::string& name, const std::string& returnType, Flags flags)
-        : m_name(name), m_returnType(returnType), m_flags(flags) {}
+
 };
 
 #endif // METHODUNIT_H

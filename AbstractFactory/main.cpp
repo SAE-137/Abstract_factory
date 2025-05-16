@@ -5,45 +5,44 @@
 
 
 
-
-#include"abstractfactory.h"
 #include "csharpfactory.h"
 #include"iclassunit.h"
 #include"cppfactory.h"
 #include"javafactory.h"
 
 
-const std::vector<std::string> IClassUnit::ACCESS_MODIFIERS = {
-    "public", "protected", "private", "internal", "protected internal"
-};
+std::string GenerateProgram(const std::shared_ptr<AbstractFactory> &factory)
+{
+    auto class_a = factory->createClassUnit("firstClass");
 
-const std::vector<std::string> MethodUnit::ACCESS_MODIFIERS = {
-    "static", "const", "virtual", "abstract", "final", "sealed", "override"
-};
+    auto class_b = factory->createClassUnit("inside class");
 
-std::string generateProgram(const AbstractFactory& factory) {
-    auto myClass = factory.createClassUnit("MyClass");
+    class_b->add(factory->createMethodUnit("testFunc1", "void", 0), IClassUnit::PUBLIC);
+    class_a->add(class_b, IClassUnit::PUBLIC);
+    class_a->add(factory->createMethodUnit("testFunc2", "void", MethodUnit::STATIC), IClassUnit::PRIVATE);
+    auto method = factory->createMethodUnit("testFunc4", "void", MethodUnit::STATIC);
 
-    myClass->add(factory.createMethodUnit("testFunc1", "void", 0), IClassUnit::PUBLIC);
-    myClass->add(factory.createMethodUnit("testFunc2", "void", MethodUnit::FINAL), IClassUnit::PRIVATE);
-    myClass->add(factory.createMethodUnit("testFunc3", "void", MethodUnit::VIRTUAL), IClassUnit::PUBLIC);
-
-    auto method = factory.createMethodUnit("testFunc4", "void", MethodUnit::STATIC);
-    method->add(factory.createPrintOperatorUnit("Hello, world!"),0);
-    myClass->add(method, IClassUnit::PROTECTED);
-
-    return myClass->compile();
+    method->Add(factory->createPrintOperatorUnit("Hello, world!"));
+    class_a->add(method, IClassUnit::PROTECTED);
+    class_a->add(factory->createMethodUnit("testFunc3", "void", MethodUnit::VIRTUAL | MethodUnit::CONST), IClassUnit::PUBLIC);
+    return class_a->compile();
 }
 
+int main()
+{
+    // C++
+    std::cout << "C++:" << std::endl;
+        std::cout << GenerateProgram(std::make_shared<CppFactory>()) << std::endl;
 
-int main() {
-    CppFactory cppFactory;
-    CSharpFactory csharpFactory;
-    JavaFactory javaFactory;
+    // C#
+    std::cout << "C#:" << std::endl;
+        std::cout << GenerateProgram(std::make_shared<CSharpFactory>()) << std::endl;
 
-    std::cout << "C++ Code:\n" << generateProgram(cppFactory) << "\n";
-    std::cout << "C# Code:\n" << generateProgram(csharpFactory) << "\n";
-    std::cout << "Java Code:\n" << generateProgram(javaFactory) << "\n";
+
+    // Java
+    std::cout << "Java:" << std::endl;
+        std::cout << GenerateProgram(std::make_shared<JavaFactory>()) << std::endl;
+
 
     return 0;
 }

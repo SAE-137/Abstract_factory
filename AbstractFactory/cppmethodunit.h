@@ -12,7 +12,7 @@ public:
     std::string compile(unsigned int level = 0) const override {
         std::string result = generateShift(level);
         if (m_flags & STATIC) result += "static ";
-        if (m_flags & VIRTUAL) result += "virtual ";
+        else if (m_flags & VIRTUAL) result += "virtual ";
         result += m_returnType + " " + m_name + "()";
         if (m_flags & CONST) result += " const";
         result += " {\n";
